@@ -3,6 +3,15 @@ import numpy as np
 import pygame
 
 class TSPEnv(gym.Env):
+    """Environment that creates TSP instances sampling nodes uniformly in [0, 1]x[0, 1].
+    
+    There are 2 important methods:
+        - reset: create a new instance and returns the new nodes and reset the list of visited nodes to an empty list.
+        - step: receives the action from the agent and updates the states accordingly and computes the reward.
+            Then sends the updated state to the agent.
+    
+    The other methods are accessory methods to show (render) the progress of the environment or set a random seed.
+    """
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 2}
 
     def __init__(self, n_nodes, render_mode=None, screen_size=600, reward_mode="dense", seed=None):
@@ -26,7 +35,7 @@ class TSPEnv(gym.Env):
             "visited": gym.spaces.Sequence(gym.spaces.Discrete(n_nodes))
         })
         
-        self.nodes: np.ndarray = np.random.rand(2, n_nodes)
+        self.nodes: np.ndarray #= np.random.rand(2, n_nodes)
         self.visited: list[int]
 
 
@@ -35,7 +44,7 @@ class TSPEnv(gym.Env):
         return [seed]
 
     def reset(self):
-        # self.nodes = np.random.rand(2, self.n_nodes)
+        self.nodes = np.random.rand(2, self.n_nodes)
         self.visited = []
         return {"nodes": self.nodes, "visited": self.visited}
 
@@ -82,6 +91,7 @@ class TSPEnv(gym.Env):
     def close(self):
         if hasattr(self, 'screen'):
             pygame.quit()
+            del self.screen
 
 
 if __name__ == "__main__":
