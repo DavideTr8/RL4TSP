@@ -1,4 +1,4 @@
-from mlp_agent import MLPAgent
+from agent import MLPAgent
 import torch
 
 import random
@@ -48,7 +48,7 @@ def random_policy(nodes):
     
 
 if __name__ == "__main__":
-    from gym_env import TSPEnv
+    from environment import TSPEnv
     import time
 
     n_nodes = 4

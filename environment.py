@@ -49,7 +49,6 @@ class TSPEnv(gym.Env):
         return {"nodes": self.nodes, "visited": self.visited}
 
     def step(self, action: int):
-        # Placeholder for step logic
         self.visited.append(action)
         if len(self.visited) == self.n_nodes:
             done = True
@@ -95,7 +94,7 @@ class TSPEnv(gym.Env):
 
 
 if __name__ == "__main__":
-    n_nodes = 3
+    n_nodes = 10
     env = TSPEnv(n_nodes)
     env.reset()
     done = False

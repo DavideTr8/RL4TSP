@@ -75,11 +75,15 @@ class MLPAgent(nn.Module):
 
 
 if __name__ == "__main__":
-    from gym_env import TSPEnv
+    from environment import TSPEnv
     import time
-    n_nodes = 10
-    agent = MLPAgent(n_nodes)
+    n_nodes = 6
+    agent = MLPAgent(n_nodes, hidden_dim=256)
     env = TSPEnv(n_nodes)
+
+    checkpoint = "policy.pt" # put None if you want the agent to act randomly
+    if checkpoint is not None:
+        agent.load_state_dict(torch.load(checkpoint))
 
     done = False
     state = env.reset()

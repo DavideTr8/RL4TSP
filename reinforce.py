@@ -1,9 +1,9 @@
 import pygame
-from mlp_agent import MLPAgent
-from gym_env import TSPEnv
+from agent import MLPAgent
+from environment import TSPEnv
 import torch
 
-from utils import greedy_policy, random_policy
+from baseline_policies import greedy_policy, random_policy
 from tqdm import tqdm
 
 class REINFORCE:
@@ -24,10 +24,10 @@ class REINFORCE:
         self.scores = []
 
         # Other hyperparameters
-        self.training_epochs = 8192  # 1024
-        self.episodes_per_epoch = 516  # 2048
+        self.training_epochs = 7500
+        self.episodes_per_epoch = 2048
         self.gamma = 1.0
-        learning_rate = 1e-2
+        learning_rate = 1e-4
         self.optimizer = torch.optim.Adam(self.agent.parameters(), lr=learning_rate)
 
 
