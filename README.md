@@ -109,21 +109,21 @@ We also collected the *scores* of the agent during training, where the score is 
 
 The plot of the scores is the following:
 
-![Plot for the scores of the REINFORCE algorithm](./scores.png)
+![Plot for the scores of the REINFORCE algorithm](./figures/figures/scores.png)
 
 We can see that the agent was still learning. The baseline policy used is the greedy policy.
 Hence, we can see that slowly over time, the agent is learning how to perform better than the greedy policy.
 
 The increase in performance is better visualized using the running average over 1000 episodes:
 
-![Plot of the running average scores](./running_avg_scores.png)
+![Plot of the running average scores](./figures/running_avg_scores.png)
 
 Finally, we can compare some solutions given at the first training iterations with some solutions computed at the end of the training.
 
 **Start of the training**          |  **End of the training**
 :-------------------------:|:-------------------------:
-Epoch 0 ![](./epoch_0.jpeg)  | Epoch 6900 ![](./epoch_6900.jpeg)
-Epoch 700 ![](./epoch_700.jpeg) | Epoch 7000 ![](./epoch_7000.jpeg)
+Epoch 0 ![](./figures/epoch_0.jpeg)  | Epoch 6900 ![](./figures/epoch_6900.jpeg)
+Epoch 700 ![](./figures/epoch_700.jpeg) | Epoch 7000 ![](./figures/epoch_7000.jpeg)
 
 As one can see, there is an improvement in how well the agent performs, while it is still far from reaching optimal solutions for all instances.
 
